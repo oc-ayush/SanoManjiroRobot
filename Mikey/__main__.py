@@ -222,7 +222,7 @@ def start(update: Update, context: CallbackContext):
                     [
                         [
                             InlineKeyboardButton(
-                                text="☑️ Add me",
+                                text="☑️Add Mikey to your group",
                                 url="t.me/{}?startgroup=true".format(
                                     context.bot.username,
                                 ),
@@ -230,22 +230,22 @@ def start(update: Update, context: CallbackContext):
                         ],
                         [
                             InlineKeyboardButton(
-                                text="🚑 Support",
-                                url=f"https://t.me/{SUPPORT_CHAT}",
+                                text="⚒ Support Group",
+                                url=f"https://t.me/Mikey_Support",
                             ),
                             InlineKeyboardButton(
                                 text="🔔 Updates",
-                                url="https://t.me/OnePunchUpdates",
+                                url="https://t.me/MikeyUpdates",
                             ),
                         ],
                         [
                             InlineKeyboardButton(
-                                text="🧾 Getting Started",
-                                url="https://t.me/OnePunchUpdates/29",
+                                text="📌 Tokyo Revengers",
+                                url="https://t.me/Tokyo_Revengers_Dual",
                             ),
                             InlineKeyboardButton(
-                                text="🗄 Source code",
-                                url="https://github.com/AnimeKaizoku/Mikey",
+                                text="💬 Anime Chat",
+                                url="https://t.me/Otaku_Discussion_Hub",
                             ),
                         ],
                         [
