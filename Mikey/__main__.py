@@ -67,8 +67,6 @@ HELP_STRINGS = """
    • in a group: will redirect you to pm, with all that chat's settings.
    
 ⚙️ Reach out for support: @Mikey_Support
-{}
-And the following:
 """.format(
     dispatcher.bot.first_name, ""
     if not ALLOW_EXCL else "\nAll commands can either be used with / or !.\n")
