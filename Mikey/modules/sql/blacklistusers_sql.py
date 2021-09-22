@@ -1,6 +1,6 @@
 import threading
 
-from Setsuna.modules.sql import BASE, SESSION
+from Mikey.modules.sql import BASE, SESSION
 from sqlalchemy import Column, String, UnicodeText
 
 
