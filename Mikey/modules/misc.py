@@ -5,7 +5,6 @@ import random2 as rdn
 import json
 import requests 
 from Mikey import dispatcher
-from Mikey import GIF_API
 from telegraph import upload_file as nyah
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 from telegram import ParseMode, Update
