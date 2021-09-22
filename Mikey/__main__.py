@@ -213,8 +213,8 @@ def start(update: Update, context: CallbackContext):
                      ],
                      [
                          InlineKeyboardButton(
-                             text="📌 My Creator",
-                             url="https://t.me/crazyguy456")
+                             text="💬 Anime Chat",
+                             url="https://t.me/Otaku_Discussion_Hub")
                      ],
                      [
                          InlineKeyboardButton(
