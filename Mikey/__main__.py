@@ -53,28 +53,27 @@ def get_readable_time(seconds: int) -> str:
 PM_START_TEXT = """
 *Hello there, My Name is Mikey!* from [Tokyo Revengers](https://anilist.co/anime/120120)!!
 *I am the Leader of Tokyo Manji Gang ⚔️!*
+
 *I'm am an Awesome Group Management Bot made by @OtakuAnimeOfficial and I am here you manage your groups , with my Awesome Features!*
 *📍Click on the Below help button or send /help to know all my Commands.*
 """
 
 HELP_STRINGS = """
-*Main* Commands [:](https://telegra.ph/file/7a55738e51cfe3838e93b.jpg)
+*Main Commands* [:](https://telegra.ph/file/7a55738e51cfe3838e93b.jpg)
  ★ /help: PM's you this message.
  ★ /help <module name>: PM's you info about that module.
- ★ /donate: information on how to donate!
  ★ /settings:
    • in PM: will send you your settings for all supported modules.
    • in a group: will redirect you to pm, with all that chat's settings.
    
 ⚙️ Reach out for support: @Mikey_Support
-
 {}
 And the following:
 """.format(
     dispatcher.bot.first_name, ""
     if not ALLOW_EXCL else "\nAll commands can either be used with / or !.\n")
 
-SAITAMA_IMG = "https://telegra.ph/file/7c9519a493f3b28a88b55.jpg"
+SAITAMA_IMG = "https://telegra.ph/file/97f028e3c18a2e30db815.png"
 
 DONATE_STRING = """Heya, glad to hear you want to donate!
 
@@ -549,8 +548,7 @@ def main():
 
     if SUPPORT_CHAT is not None and isinstance(SUPPORT_CHAT, str):
         try:
-            dispatcher.bot.sendMessage(f"@{SUPPORT_CHAT}", "[Put one finger on my street hawk and I’ll kill you!!](https://telegra.ph/file/94a219aba4694eb84c924.mp4)")
-            dispatcher.bot.sendMessage(f"{OWNER_ID}", "[Put one finger on my street hawk and I’ll kill you!!](https://telegra.ph/file/94a219aba4694eb84c924.mp4)") 
+            dispatcher.bot.sendMessage(f"@{SUPPORT_CHAT}", "[Put one finger on my street hawk and I’ll kill you!!](https://telegra.ph/file/94a219aba4694eb84c924.mp4)", parse_mode=ParseMode.MARKDOWN) 
         except Unauthorized:
             LOGGER.warning(
                 "Bot isnt able to send message to support_chat, go and check!")
