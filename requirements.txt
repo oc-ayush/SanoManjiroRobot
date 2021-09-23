@@ -29,6 +29,7 @@ telethon==1.16.4
 spamwatch
 alphabet_detector
 pyrate-limiter
+pyrogram
 cachetools
 nekos.py
 saucenao_api 
