@@ -189,6 +189,7 @@ else:
 updater = tg.Updater(TOKEN, workers=WORKERS, use_context=True)
 telethn = TelegramClient("saitama", API_ID, API_HASH)
 dispatcher = updater.dispatcher
+pbot = Client("MikeyPyro", api_id=API_ID, api_hash=API_HASH, bot_token=TOKEN)
 
 DRAGONS = list(DRAGONS) + list(DEV_USERS)
 DEV_USERS = list(DEV_USERS)
