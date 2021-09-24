@@ -29,7 +29,13 @@ telethon==1.16.4
 spamwatch
 alphabet_detector
 pyrate-limiter
+asyncio
+requests
+ujson
+youtube_dl==2021.6.6
 pyrogram
+youtube_search
+youtube-search-python
 cachetools
 nekos.py
 saucenao_api 
