@@ -36,7 +36,7 @@ ujson
 youtube_dl==2021.6.6
 pyrogram
 youtube_search
-youtube-search-python
+youtube-search-python==1.4.8
 cachetools
 nekos.py
 saucenao_api 
