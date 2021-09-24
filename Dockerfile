@@ -65,7 +65,7 @@ RUN apt update && apt upgrade -y && \
 RUN pip3 install --upgrade pip setuptools
 
 # Copy Python Requirements to /root/Mikey
-RUN git clone https://github.com/Zack-Bloodshot/Mikey /root/Mikey
+RUN git clone https://github.com/CrazyGuy456/Mikey /root/Mikey
 WORKDIR /root/Mikey
 
 #Copy config file to /root/SaitamaRobot/SaitamaRobot
