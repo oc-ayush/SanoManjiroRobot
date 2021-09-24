@@ -287,12 +287,13 @@ Assistant username:- @MikeyVCbot
 
 • More tools 📲
  - `/admincache`: Updates admin info of your group. Try if bot isn't recognize admin
- - `/userbotjoin`: Invite @EsDeathVCbot to your chat
+ - `/userbotjoin`: Invite @MikeyVCbot to your chat
 
-• Channel Music Play 🛠
+🏷 Channel Music Play 🛠
 1) Make me admin of your channel 
 2) Send /userbotjoinchannel in linked group
 3) Now send commands in linked group
+
 🏷 For linked group admins only:
 
 - /cplay [song name] - play song you requested
@@ -314,7 +315,7 @@ channel is also can be used instead of c ( /cplay = /channelplay )
 1) Get your channel ID.
 2) Create a group with tittle: Channel Music: <your_channel_id>
 3) Add bot as Channel admin with full perms
-4) Add @EsDeathVCbot to the channel as an admin.
+4) Add @MikeyVCbot to the channel as an admin.
 5) Simply send commands in your group.
 """
 
