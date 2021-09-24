@@ -1,7 +1,7 @@
 import asyncio, time, os, asyncio, json
 from telethon.tl.types import DocumentAttributeAudio
 from Mikey.events import register
-from Mikey.utils import progress
+from Mikey.utlis import progress
 from youtube_dl import YoutubeDL
 from youtube_dl.utils import (DownloadError, ContentTooShortError,
 
@@ -255,64 +255,11 @@ async def download_video(v_url):
 __help__ = """
  *You can either enter just the song name or both the artist and song
   name. *
+
  - `/song` <songname artist(optional)>: uploads the song in it's best quality available
  - `/video` <songname artist(optional)>: uploads the video song in it's best quality available
  - `/lyrics` <song>: returns the lyrics of that song.
-I can now also play music in your group's voice chat
- 
-Assistant username:- @MikeyVCBot
- 
- Setting up 
-1) Make bot admin
-2) Start a voice chat
-3) Try `/play [song name]` for the first time by an admin
-) If userbot joined enjoy music, If not add @MikeyVCBot to your group manually and retry
- Commands:
- 
-• Song Playing 🎶
- - `/play` <songname>: Play song using youtube music
- - `/play` <yt url> : Play the given yt url
- - `/dplay`: Play song via deezer
- - `/splay`: Play song via jio saavn
-  
-• Playback ⏯
- - `/player`: Open Settings menu of player
- - `/skip`: Skips the current track
- - `/pause`: Pause track
- - `/resume`: Resumes the paused track
- - `/end`: Stops media playback
- - `/current`: Shows the current Playing track
- - `/playlist`: Shows playlist
 
-• More tools 📲
- - `/admincache`: Updates admin info of your group. Try if bot isn't recognize admin
- - `/userbotjoin`: Invite @EsDeathVCbot to your chat
-
-• Channel Music Play 🛠
-1) Make me admin of your channel 
-2) Send /userbotjoinchannel in linked group
-3) Now send commands in linked group
-
-🏷 For linked group admins only:
-- /cplay [song name] - play song you requested
-- /cdplay [song name] - play song you requested via deezer
-- /csplay [song name] - play song you requested via jio saavn
-- /cplaylist - Show now playing list
-- /cccurrent - Show now playing
-- /cplayer - open music player settings panel
-- /cpause - pause song play
-- /cresume - resume song play
-- /cskip - play next song
-- /cend - stop music play
-- /userbotjoinchannel - invite assistant to your chat
-channel is also can be used instead of c ( /cplay = /channelplay )
-
-🏷 If you don't like to play in linked group:
-1) Get your channel ID.
-2) Create a group with tittle: Channel Music: <your_channel_id>
-3) Add bot as Channel admin with full perms
-4) Add @EsDeathVCbot to the channel as an admin.
-5) Simply send commands in your group.
 """
 
 __mod_name__ = "Music"
