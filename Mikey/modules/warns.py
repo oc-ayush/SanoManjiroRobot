@@ -37,25 +37,25 @@ def warn(user: User,
          message: Message,
          warner: User = None) -> str:
     if is_user_admin(chat, user.id):
-        message.reply_text("Nyah!! admins, They are too far to be eliminated!")
+        message.reply_text("Admins, They are too far to be eliminated!")
         return
 
     if user.id in TIGERS:
         if warner:
-            message.reply_text("Blades cant be warned.")
+            message.reply_text("Tigers cant be warned.")
         else:
             message.reply_text(
-                "Nyah a blade triggered an auto warn filter!\n I can't warn balde but trysweet sama is watching!! "
+                "Tiger triggered an auto warn filter!\n I can't warn tigers but they should avoid abusing this."
             )
         return
 
     if user.id in WOLVES:
         if warner:
-            message.reply_text("This kitty has a shield given by trysweet sama?!") 
+            message.reply_text("Wolf disasters are warn immune.") 
 
         else:
             message.reply_text(
-                " A shield user triggered an auto warn filter!\nI can't warn them but they should avoid abusing this."
+                "Wolf Disaster triggered an auto warn filter!\nI can't warn wolves but they should avoid abusing this."
             )
         return
 
@@ -144,7 +144,7 @@ def button(update: Update, context: CallbackContext) -> str:
         res = sql.remove_warn(user_id, chat.id)
         if res:
             update.effective_message.edit_text(
-                "Warn released, Mikey likes {}... Nyah!! ".format(
+                "Warn released, Mikey likes {}... ".format(
                     mention_html(user.id, user.first_name)),
                 parse_mode=ParseMode.HTML)
             user_member = chat.get_member(user_id)
@@ -190,7 +190,7 @@ def warn_user(update: Update, context: CallbackContext) -> str:
         else:
             return warn(chat.get_member(user_id).user, chat, reason, message, warner)
     else:
-        message.reply_text("I don't think that organism exists... ")
+        message.reply_text("I don't think that Shit exists... ")
     return ""
 
 @run_async
@@ -219,9 +219,9 @@ def rmwarn_cmd(update: Update, context: CallbackContext) -> str:
                 message.reply_text(
                   reply_text, reply_markup=keyboard, quote=False)
         else:
-            message.reply_text("Keko!! This user doesn't have any warns.")
+            message.reply_text("This user doesn't have any warns.")
     else:
-        message.reply_text("Nya! No user has been mentioned.")
+        message.reply_text("No user has been mentioned.")
     return ""
 
 @run_async
@@ -271,10 +271,10 @@ def warns(update: Update, context: CallbackContext):
                 update.effective_message.reply_text(msg)
         else:
             update.effective_message.reply_text(
-                f"User has {num_warns}/{limit} warns, but no reasons for any of them, i guess user has some bad relationship.... ."
+                f"User has {num_warns}/{limit} warns, but no reasons for any of them."
             )
     else:
-        update.effective_message.reply_text("Nya! This user doesn't have any warns!")
+        update.effective_message.reply_text("This user doesn't have any warns!")
 
 
 # Dispatcher handler stop - do not async

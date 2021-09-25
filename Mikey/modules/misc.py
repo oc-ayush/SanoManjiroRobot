@@ -85,7 +85,7 @@ def gifufinder(update: Update, context: CallbackContext):
   if args:
     search_term = args
   else:
-    msg.reply_text(f"Nyah! Gimme something to search {user.first_name} kun")
+    msg.reply_text(f"Gimme something to search {user.first_name}")
     return 
   r = requests.get(
     "https://g.tenor.com/v1/search?q=%s&key=%s&limit=%s" % (search_term, apikey, lmt))

@@ -49,7 +49,7 @@ SLAP_TEMPLATES = (
     "{user2} rest in pieces", 
     "{user2} is what's for dinner!",
     "{user2} was executed through slaps by {user1}.",
-    "{user1} spammed {user2}'s cheeks, Nyah Violence",
+    "{user1} spammed {user2}'s cheeks, Violence",
     "{user1} RSA-encrypted {user2} and deleted the private key after slapping {user2}",
     "{user1} slaps {user2}!!", 
     "{user1} beheaded {user2},... with slaps... ", 
