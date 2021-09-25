@@ -10,6 +10,7 @@ feedparser
 pynewtonmath
 spongemock
 zalgo-text
+humanize
 geopy
 nltk
 psutil
