@@ -1,5 +1,5 @@
-from Setsuna.modules.helper_funcs.telethn import IMMUNE_USERS, telethn
-from Setsuna import DRAGONS
+from Mikey.modules.helper_funcs.telethn import IMMUNE_USERS, telethn
+from Mikey import DRAGONS
 from telethon.tl.types import ChannelParticipantsAdmins
 
 

@@ -94,10 +94,10 @@ def req(update: Update, context: CallbackContext):
         message = kek
 
         if args == "None":
-            message.reply_text("Nyah boi request something!!")
+            message.reply_text("Request something!!")
             return "" 
         if chat and chat.type == Chat.SUPERGROUP:
-          requested = "Nyahh!! Request accepted!!" 
+          requested = "Request accepted!!" 
           msg = f"<b>{html.escape(chat.title)}</b>\n<b>Requested: </b> {args}\n<b>Requesting User:</b> {mention_html(req_user.id, req_user.first_name)}"
           if chat.username:
             link = f'\n<b> </b> <a href="https://t.me/{chat.username}/{message.message_id}">.......</a>'
@@ -108,7 +108,7 @@ def req(update: Update, context: CallbackContext):
         else:
             bot.send_message(chat.id, "Req Channel Not set!" )
 
-        message.reply_text("Nyah! Request Accepted!!") 
+        message.reply_text("Request Accepted!!") 
         return msg
 
         return ""  

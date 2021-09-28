@@ -1,45 +1,25 @@
 from typing import Optional
 import time
+import random
+from datetime import datetime
+import humanize
+
 from telegram import Message, User
 from telegram import MessageEntity, ParseMode
 from telegram.error import BadRequest
 from telegram.ext import Filters, MessageHandler, run_async
+
 from Mikey import dispatcher
 from Mikey.modules.disable import DisableAbleCommandHandler, DisableAbleMessageHandler
-from Mikey.modules.sql.afk_redis import start_afk, end_afk, is_user_afk, afk_reason
+from Mikey.modules.redis.afk_redis import start_afk, end_afk, is_user_afk, afk_reason
 from Mikey import REDIS
 from Mikey.modules.users import get_user_id
+
 from Mikey.modules.helper_funcs.alternate import send_message
+from Mikey.modules.helper_funcs.readable_time import get_readable_time
+
 AFK_GROUP = 7
 AFK_REPLY_GROUP = 8
-
-
-def get_readable_time(seconds: int) -> str:
-    count = 0
-    ping_time = ""
-    time_list = []
-    time_suffix_list = ["s", "m", "h", "days"]
-
-    while count < 4:
-        count += 1
-        if count < 3:
-            remainder, result = divmod(seconds, 60)
-        else:
-            remainder, result = divmod(seconds, 24)
-        if seconds == 0 and remainder == 0:
-            break
-        time_list.append(int(result))
-        seconds = int(remainder)
-
-    for x in range(len(time_list)):
-        time_list[x] = str(time_list[x]) + time_suffix_list[x]
-    if len(time_list) == 4:
-        ping_time += time_list.pop() + ", "
-
-    time_list.reverse()
-    ping_time += ":".join(time_list)
-
-    return ping_time
 
 @run_async
 def afk(update, context):
@@ -77,14 +57,31 @@ def no_longer_afk(update, context):
     REDIS.delete(f'afk_time_{user.id}')
     res = end_afk(user.id)
     if res:
-        if message.new_chat_members:  #dont say msg
+        if message.new_chat_members:  # dont say msg
             return
         firstname = update.effective_user.first_name
         try:
-            message.reply_text(
-                "*{}* is no longer AFK!\nTime you were AFK for: `{}`".format(firstname, end_afk_time), parse_mode=ParseMode.MARKDOWN)
+            options = [
+                "{} Is wasting his time in the chat!",
+                "The Dead {} Came Back From His Grave!",
+                "We thought we lost you {}",
+                "Welcome Back {} now pay $100 to Get freedom or get banned!",
+                "{} Good job waking up now get ready for your classes!",
+                "Hey {}! Why weren't you online for such a long time?",
+                "{} why did you came back?",
+                "{} Is now back online!",
+                "OwO, Welcome back {}",
+                "Welcome to hell again {}",
+                "Mission failed successfully {}",
+            ]
+            chosen_option = random.choice(options)
+            update.effective_message.reply_text(
+                chosen_option.format(firstname),
+            )
         except Exception:
             return
+            
+
 
 
 @run_async
@@ -136,7 +133,7 @@ def reply_afk(update, context):
         fst_name = message.reply_to_message.from_user.first_name
         check_afk(update, context, user_id, fst_name, userc_id)
 
-@run_async
+
 def check_afk(update, context, user_id, fst_name, userc_id):
     if is_user_afk(user_id):
         reason = afk_reason(user_id)
@@ -144,13 +141,13 @@ def check_afk(update, context, user_id, fst_name, userc_id):
         if reason == "none":
             if int(userc_id) == int(user_id):
                 return
-            res = "*{}* is AFK!\nSince: `{}`".format(fst_name, since_afk)
-            update.effective_message.reply_text(res, parse_mode=ParseMode.MARKDOWN)
+            res = "{} is Dead!\nLast Online: {} ago".format(fst_name, since_afk)
+            update.effective_message.reply_text(res)
         else:
             if int(userc_id) == int(user_id):
                 return
-            res = "*{}* is AFK!\nSays it's because of:\n`{}`\nSince: `{}`".format(fst_name, reason, since_afk)
-            update.effective_message.reply_text(res, parse_mode=ParseMode.MARKDOWN)
+            res = "{} is afk!\nReason: {}\nLast seen: {} ago".format(fst_name, reason, since_afk)
+            update.effective_message.reply_text(res)
 
 
 def __user_info__(user_id):
@@ -159,17 +156,22 @@ def __user_info__(user_id):
     if is_afk:
         since_afk = get_readable_time((time.time() - float(REDIS.get(f'afk_time_{user_id}'))))
         text = "<i>This user is currently afk (away from keyboard).</i>"
-        text += f"\n<i>Since: {since_afk}</i>"
+        text += f"\n<i>Last Seen: {since_afk}</i>"
        
     else:
-        text = "<i>This user is currently isn't afk (away from keyboard).</i>"
+        text = "<i>This user currently isn't afk (not away from keyboard).</i>"
     return text
 
 
 def __gdpr__(user_id):
     end_afk(user_id)
 
-
+__help__ = """
+ • `/afk <reason>`*:* mark yourself as AFK(away from keyboard).
+ • `brb <reason>`*:* same as the afk command - but not a command.
+When marked as AFK, any mentions will be replied to with a message to say you're not available!
+"""
+__mod_name__ = "AFK"
 
 AFK_HANDLER = DisableAbleCommandHandler("afk", afk)
 AFK_REGEX_HANDLER = MessageHandler(Filters.regex("(?i)brb"), afk)
@@ -180,10 +182,3 @@ dispatcher.add_handler(AFK_HANDLER, AFK_GROUP)
 dispatcher.add_handler(AFK_REGEX_HANDLER, AFK_GROUP)
 dispatcher.add_handler(NO_AFK_HANDLER, AFK_GROUP)
 dispatcher.add_handler(AFK_REPLY_HANDLER, AFK_REPLY_GROUP)
-
-
-__mod_name__ = "BRB"
-__command_list__ = ["afk"]
-__handlers__ = [(AFK_HANDLER, AFK_GROUP), (AFK_REGEX_HANDLER, AFK_GROUP),
-                (NO_AFK_HANDLER, AFK_GROUP),
-                (AFK_REPLY_HANDLER, AFK_REPLY_GROUP)]
